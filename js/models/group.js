@@ -1,3 +1,4 @@
+App.GROUP_EXPANDABLE = 2;
 
 App.Group = Em.Object.extend({
 	tag: null, // String
@@ -10,12 +11,17 @@ App.Group = Em.Object.extend({
 		if (!this._activities) this._activities = [];
 		return this._activities;
 	}.property(),
+
+	isExpandable: function() {
+		return this.get('tag') === 'scheduled_for' && this.getPath('activities.length') >= App.GROUP_EXPANDABLE;
+	}.property('tag','activities.length'),
+
 	formattedTitle: function() {
 		var tag = this.get('tag'), kind = this.get('kind'), activities = this.get('activities');
 		var count = activities.get('length');
 
 		if (tag === 'scheduled_for') {
-			if (count === 1) {
+			if (count < App.GROUP_EXPANDABLE) {
 				var activity = activities[0];
 				switch (kind.get('kind')) {
 					case 'campaign': return "Complete \"%@1\"Campaign".loc(activity.reference.campaign.name);
