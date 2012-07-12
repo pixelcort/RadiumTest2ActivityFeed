@@ -1,4 +1,4 @@
-App.GROUP_EXPANDABLE = 2;
+App.GROUP_EXPANDABLE = 2; // Changing this currently would require refactoring how these are rendered in the template
 
 App.Group = Em.Object.extend({
 	tag: null, // String
