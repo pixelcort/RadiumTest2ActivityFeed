@@ -6,7 +6,7 @@ App.Activity = Em.Object.extend({
 			case 'call_list': return 'icon-th-list';
 			case 'todo': return 'icon-ok';
 			case 'deal': return 'icon-tag';
-			case 'meeting': return 'icon-flag';
+			case 'meeting': return 'icon-eye-open';
 			default:
 				Em.warn("Unknown Kind: %@1".fmt(this.get('kind')));
 				return 'icon-question-sign';
