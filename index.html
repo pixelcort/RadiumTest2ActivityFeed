@@ -56,7 +56,7 @@
 			<script type="text/x-handlebars">
 				<div class="btn-toolbar">
 				  <div class="btn-group">
-				    <button class="btn">All</button>
+				  {{view App.AllKindsButtonView}}
 				  </div>
 					{{view Bootstrap.ButtonGroup contentBinding="App.router.kindsController" itemViewClass="App.KindButtonView"}}
 					{{#each App.router.daysController}}
@@ -82,6 +82,7 @@
 		<script src="js/models/kind.js"></script>
 		<script src="js/models/group.js"></script>
 		<script src="js/views/kind_button.js"></script>
+		<script src="js/views/all_kinds_button.js"></script>
 		<script src="js/views/day.js"></script>
 		<script src="js/controllers/kinds.js"></script>
 		<script src="js/controllers/days.js"></script>
