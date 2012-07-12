@@ -7,7 +7,9 @@ App.Activity = Em.Object.extend({
 			case 'todo': return 'icon-ok';
 			case 'deal': return 'icon-tag';
 			case 'meeting': return 'icon-flag';
-			default: debugger;
+			default:
+				Em.warn("Unknown Kind: %@1".fmt(this.get('kind')));
+				return 'icon-question-sign';
 		}
 	}.property('kind'),
 	formattedTitle: function() {
