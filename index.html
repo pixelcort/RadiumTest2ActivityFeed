@@ -38,17 +38,26 @@
 					{{view Bootstrap.ButtonGroup contentBinding="App.router.kindsController" itemViewClass="App.KindButtonView"}}
 					{{#each App.router.daysController}}
 						<h2>{{day}}</h2>
-						{{#each datebookGroups}}
-							<div><!-- all tag scheduled_for -->
-								{{formattedTitle}}
-							</div>
-						{{/each}}
-						{{#if datebookGroups.length}}{{#if historicalGroups.length}}-----{{/if}}{{/if}}
-						{{#each historicalGroups}}
-							<div>
-								{{formattedTitle}}
-							</div>
-						{{/each}}
+						<ul>
+							{{#each datebookGroups}}
+								<li><!-- all tag scheduled_for -->
+									{{#if isExpandable}}EXPAND TRIANGLE{{/if}}
+									{{formattedTitle}}
+								</li>
+							{{/each}}
+						</ul>
+						{{#if datebookGroups.length}}
+							{{#if historicalGroups.length}}
+								-----
+							{{/if}}
+						{{/if}}
+						<ul>
+							{{#each historicalGroups}}
+								<li>
+									{{formattedTitle}}
+								</li>
+							{{/each}}
+						</ul>
 					{{/each}}
 				</div>
 			</script>
