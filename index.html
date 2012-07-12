@@ -10,27 +10,29 @@
 	    </style>
 	    <link href="lib/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
 		<script type="text/x-handlebars" data-template-name="day">
-			<h2>{{day}}</h2>
-			<ul>
-				{{#each datebookGroups}}
-					<li><!-- all tag scheduled_for -->
-						{{#if isExpandable}}EXPAND TRIANGLE{{/if}}
-						{{formattedTitle}}
-					</li>
-				{{/each}}
-			</ul>
-			{{#if datebookGroups.length}}
-				{{#if historicalGroups.length}}
-					-----
+			{{#if view.shouldShow}}
+				<h2>{{day}}</h2>
+				<ul>
+					{{#each view.filteredDatebookGroups}}
+						<li><!-- all tag scheduled_for -->
+							{{#if isExpandable}}EXPAND TRIANGLE{{/if}}
+							{{formattedTitle}}
+						</li>
+					{{/each}}
+				</ul>
+				{{#if view.filteredDatebookGroups.length}}
+					{{#if view.filteredHistoricalGroups.length}}
+						-----
+					{{/if}}
 				{{/if}}
+				<ul>
+					{{#each view.filteredHistoricalGroups}}
+						<li>
+							{{formattedTitle}}
+						</li>
+					{{/each}}
+				</ul>
 			{{/if}}
-			<ul>
-				{{#each historicalGroups}}
-					<li>
-						{{formattedTitle}}
-					</li>
-				{{/each}}
-			</ul>
 		</script>
 	</head>
 	<body>
