@@ -9,6 +9,29 @@
 	      }
 	    </style>
 	    <link href="lib/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+		<script type="text/x-handlebars" data-template-name="day">
+			<h2>{{day}}</h2>
+			<ul>
+				{{#each datebookGroups}}
+					<li><!-- all tag scheduled_for -->
+						{{#if isExpandable}}EXPAND TRIANGLE{{/if}}
+						{{formattedTitle}}
+					</li>
+				{{/each}}
+			</ul>
+			{{#if datebookGroups.length}}
+				{{#if historicalGroups.length}}
+					-----
+				{{/if}}
+			{{/if}}
+			<ul>
+				{{#each historicalGroups}}
+					<li>
+						{{formattedTitle}}
+					</li>
+				{{/each}}
+			</ul>
+		</script>
 	</head>
 	<body>
     <div class="navbar navbar-fixed-top">
@@ -37,27 +60,7 @@
 				  </div>
 					{{view Bootstrap.ButtonGroup contentBinding="App.router.kindsController" itemViewClass="App.KindButtonView"}}
 					{{#each App.router.daysController}}
-						<h2>{{day}}</h2>
-						<ul>
-							{{#each datebookGroups}}
-								<li><!-- all tag scheduled_for -->
-									{{#if isExpandable}}EXPAND TRIANGLE{{/if}}
-									{{formattedTitle}}
-								</li>
-							{{/each}}
-						</ul>
-						{{#if datebookGroups.length}}
-							{{#if historicalGroups.length}}
-								-----
-							{{/if}}
-						{{/if}}
-						<ul>
-							{{#each historicalGroups}}
-								<li>
-									{{formattedTitle}}
-								</li>
-							{{/each}}
-						</ul>
+						{{view App.DayView}}
 					{{/each}}
 				</div>
 			</script>
@@ -79,6 +82,7 @@
 		<script src="js/models/kind.js"></script>
 		<script src="js/models/group.js"></script>
 		<script src="js/views/kind_button.js"></script>
+		<script src="js/views/day.js"></script>
 		<script src="js/controllers/kinds.js"></script>
 		<script src="js/controllers/days.js"></script>
 
