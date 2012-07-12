@@ -57,16 +57,20 @@ App.ready = function main() {
 						data: rawActivity
 					});
 				})
-				var group = App.Group.create({
-					tag: tag.key,
-					kind: kind,
-					_activities: activities
-				});
-
-				if (tag.key === 'scheduled_for') {
-					day.get('datebookGroups').pushObject(group);
+				if (activities.length <= 5 && tag.key === 'scheduled_for') { // Group activities of more than 5 of the same in the datebook section
+					day.get('datebookGroups').pushObjects(activities);
 				} else {
-					day.get('historicalGroups').pushObject(group);
+					var group = App.Group.create({
+						tag: tag.key,
+						kind: kind,
+						_activities: activities
+					});
+
+					if (tag.key === 'scheduled_for') {
+						day.get('datebookGroups').pushObject(group);
+					} else {
+						day.get('historicalGroups').pushObject(group);
+					}
 				}
 			}
 

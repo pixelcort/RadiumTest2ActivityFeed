@@ -1,5 +1,3 @@
-App.GROUP_EXPANDABLE = 2; // Changing this currently would require refactoring how these are rendered in the template
-
 App.Group = Em.Object.extend({
 	tag: null, // String
 	kind: null, // App.Kind
@@ -25,12 +23,7 @@ App.Group = Em.Object.extend({
 		var count = activities.get('length');
 
 		if (tag === 'scheduled_for') {
-			if (count < App.GROUP_EXPANDABLE) {
-				var activity = activities[0];
-				return activity.get('formattedTitle');
-			} else {
-				return "%@1 %@2".loc(count, (count===1)?kind.get('formattedKind'):kind.get('formattedKindPlural'));
-			}
+			return "%@1 %@2".loc(count, (count===1)?kind.get('formattedKind'):kind.get('formattedKindPlural'));
 		} else {
 			return "%@1 %@2 %@3".loc(count, (count===1)?kind.get('formattedKind'):kind.get('formattedKindPlural'), tag.split('_').join(' '));
 		}
