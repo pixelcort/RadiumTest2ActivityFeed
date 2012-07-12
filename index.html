@@ -11,25 +11,16 @@
 	    <link href="lib/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
 		<script type="text/x-handlebars" data-template-name="day">
 			{{#if view.shouldShow}}
+				<hr/>
 				<h2>{{day}}</h2>
 				<ul>
 					{{#each view.filteredDatebookGroups}}
-						<li><!-- all tag scheduled_for -->
-							{{#if isExpandable}}EXPAND TRIANGLE{{/if}}
-							{{formattedTitle}}
-							{{#if isExpandable}}
-								<ul>
-									{{#each activities}}
-										<li>{{formattedTitle}}</li>
-									{{/each}}
-								</ul>
-							{{/if}}
-						</li>
+						{{view App.DatebookGroupView}}
 					{{/each}}
 				</ul>
 				{{#if view.filteredDatebookGroups.length}}
 					{{#if view.filteredHistoricalGroups.length}}
-						-----
+						<hr/>
 					{{/if}}
 				{{/if}}
 				<ul>
@@ -40,6 +31,30 @@
 					{{/each}}
 				</ul>
 			{{/if}}
+		</script>
+		<script type="text/x-handlebars" data-template-name="group">
+			<li><!-- all tag scheduled_for -->
+				{{#if isExpandable}}
+					{{#if view.isExpanded}}
+						<i style="cursor:pointer;" class="icon-minus-sign"></i>
+					{{else}}
+						<i style="cursor:pointer;" class="icon-plus-sign"></i>
+					{{/if}}
+				{{else}}
+					<i {{bindAttr class="icon"}}></i>
+				{{/if}}
+				{{formattedTitle}}
+				{{#if isExpandable}}{{#if view.isExpanded}}
+					<ul>
+						{{#each activities}}
+							<li>
+								<i {{bindAttr class="icon"}}></i>
+								{{formattedTitle}}
+							</li>
+						{{/each}}
+					</ul>
+				{{/if}}{{/if}}
+			</li>
 		</script>
 	</head>
 	<body>
@@ -68,7 +83,7 @@
 				  {{view App.AllKindsButtonView}}
 				  </div>
 					{{view Bootstrap.ButtonGroup contentBinding="App.router.kindsController" itemViewClass="App.KindButtonView"}}
-					{{#each App.router.daysController}}
+					{{#each App.router.daysController.arrangedContent}}
 						{{view App.DayView}}
 					{{/each}}
 				</div>
@@ -94,6 +109,7 @@
 		<script src="js/views/kind_button.js"></script>
 		<script src="js/views/all_kinds_button.js"></script>
 		<script src="js/views/day.js"></script>
+		<script src="js/views/datebook_group.js"></script>
 		<script src="js/controllers/kinds.js"></script>
 		<script src="js/controllers/days.js"></script>
 

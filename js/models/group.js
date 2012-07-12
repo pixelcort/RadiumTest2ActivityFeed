@@ -16,6 +16,10 @@ App.Group = Em.Object.extend({
 		return this.get('tag') === 'scheduled_for' && this.getPath('activities.length') >= App.GROUP_EXPANDABLE;
 	}.property('tag','activities.length'),
 
+	icon: function() {
+		return this.getPath('activities.firstObject.icon');
+	}.property('activities'),
+
 	formattedTitle: function() {
 		var tag = this.get('tag'), kind = this.get('kind'), activities = this.get('activities');
 		var count = activities.get('length');
