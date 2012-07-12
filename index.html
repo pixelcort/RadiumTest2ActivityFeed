@@ -37,7 +37,19 @@
 				  </div>
 					{{view Bootstrap.ButtonGroup contentBinding="App.router.kindsController" itemViewClass="App.KindButtonView"}}
 					{{#each App.router.daysController}}
+						<hr/>
 						<h2>{{day}}</h2>
+						{{#each datebookGroups}}
+							<div><!-- all tag scheduled_for -->
+								Group: kind {{kind.kind}} activities {{activities.length}}
+							</div>
+						{{/each}}
+						<hr/>
+						{{#each historicalGroups}}
+							<div>
+								Group: tag {{tag}} kind {{kind.kind}} activities {{activities.length}}
+							</div>
+						{{/each}}
 					{{/each}}
 				</div>
 			</script>
@@ -57,6 +69,7 @@
 
 		<script src="js/models/day.js"></script>
 		<script src="js/models/kind.js"></script>
+		<script src="js/models/group.js"></script>
 		<script src="js/views/kind_button.js"></script>
 		<script src="js/controllers/kinds.js"></script>
 		<script src="js/controllers/days.js"></script>
