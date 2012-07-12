@@ -3,6 +3,11 @@ RadiumTest2ActivityFeed Implementation
 
 This is an implementation of [Radium Test #2 - Activity Feed](https://gist.github.com/7599832dee51d15633af).
 
+Demo
+----
+
+[http://pixelcort.github.com/RadiumTest2ActivityFeed/](http://pixelcort.github.com/RadiumTest2ActivityFeed/)
+
 Solution
 --------
 
