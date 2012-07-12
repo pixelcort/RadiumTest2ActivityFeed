@@ -17,6 +17,13 @@
 						<li><!-- all tag scheduled_for -->
 							{{#if isExpandable}}EXPAND TRIANGLE{{/if}}
 							{{formattedTitle}}
+							{{#if isExpandable}}
+								<ul>
+									{{#each activities}}
+										<li>{{formattedTitle}}</li>
+									{{/each}}
+								</ul>
+							{{/if}}
 						</li>
 					{{/each}}
 				</ul>
@@ -83,6 +90,7 @@
 		<script src="js/models/day.js"></script>
 		<script src="js/models/kind.js"></script>
 		<script src="js/models/group.js"></script>
+		<script src="js/models/activity.js"></script>
 		<script src="js/views/kind_button.js"></script>
 		<script src="js/views/all_kinds_button.js"></script>
 		<script src="js/views/day.js"></script>

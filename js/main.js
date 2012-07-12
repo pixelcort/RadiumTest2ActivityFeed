@@ -51,6 +51,12 @@ App.ready = function main() {
 
 				App.dimension_tag.filter(tag.key);
 				var activities = App.dimension_tag.top(Infinity);
+				activities = activities.map(function(rawActivity) {
+					return App.Activity.create({
+						kind: kind,
+						data: rawActivity
+					});
+				})
 				var group = App.Group.create({
 					tag: tag.key,
 					kind: kind,
