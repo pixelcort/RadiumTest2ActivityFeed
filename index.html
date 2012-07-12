@@ -37,17 +37,16 @@
 				  </div>
 					{{view Bootstrap.ButtonGroup contentBinding="App.router.kindsController" itemViewClass="App.KindButtonView"}}
 					{{#each App.router.daysController}}
-						<hr/>
 						<h2>{{day}}</h2>
 						{{#each datebookGroups}}
 							<div><!-- all tag scheduled_for -->
-								Group: kind {{kind.kind}} activities {{activities.length}}
+								{{formattedTitle}}
 							</div>
 						{{/each}}
-						<hr/>
+						{{#if datebookGroups.length}}{{#if historicalGroups.length}}-----{{/if}}{{/if}}
 						{{#each historicalGroups}}
 							<div>
-								Group: tag {{tag}} kind {{kind.kind}} activities {{activities.length}}
+								{{formattedTitle}}
 							</div>
 						{{/each}}
 					{{/each}}

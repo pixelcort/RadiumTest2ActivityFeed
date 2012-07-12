@@ -1,4 +1,4 @@
 App.KindButtonView = Bootstrap.Button.extend({
   tagName: 'a',
-  template: Em.Handlebars.compile('{{view.content.kind}}')
+  template: Em.Handlebars.compile('{{view.content.formattedKindPluralTitleized}}')
 });
